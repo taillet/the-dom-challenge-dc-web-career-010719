@@ -1,6 +1,6 @@
 let counter = 0;
 let p = false;
-let timerId = setInterval(callback, 1000)
+let timerId = setInterval(plusOne, 1000)
 let number = null;
 let count;
 
@@ -12,10 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelector('form').addEventListener('submit', comment)
 })
 
-function callback() {
-  document.querySelector(`#counter`).innerHTML = ++counter;
-}
-
 function plusOne() {
   document.querySelector(`#counter`).innerHTML = ++counter;
 }
@@ -26,7 +22,7 @@ function minusOne() {
 
 function pauseGame() {
   if (p == true) {
-    timerId = setInterval(callback, 1000)
+    timerId = setInterval(plusOne, 1000)
     p = false;
     document.getElementById(`pause`).innerHTML = "pause"
   } else if (p == false) {
