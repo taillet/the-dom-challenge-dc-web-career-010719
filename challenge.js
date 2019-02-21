@@ -27,21 +27,14 @@ function minusOne() {
 function pauseGame() {
   if (p == true) {
     timerId = setInterval(callback, 1000)
-    document.getElementById(`pause`).innerHTML = "pause"
-    document.getElementById(`+`).disabled = false;
-    document.getElementById(`-`).disabled = false;
-    document.getElementById(`<3`).disabled = false;
-    document.getElementById(`submit`).disabled = false;
     p = false;
+    document.getElementById(`pause`).innerHTML = "pause"
   } else if (p == false) {
     timerId = clearInterval(timerId)
     document.getElementById(`pause`).innerHTML = "resume"
-    document.getElementById(`+`).disabled = true;
-    document.getElementById(`-`).disabled = true;
-    document.getElementById(`<3`).disabled = true;
-    document.getElementById(`submit`).disabled = true;
     p = true;
   }
+  document.querySelectorAll(`button:not(#pause)`).forEach((button)=>{button.disabled = p })
 }
 
 function comment(event) {
