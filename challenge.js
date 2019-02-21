@@ -58,7 +58,7 @@ function addComment(text) {
 }
 
 function like() {
-  let likedNumbers = Array.from(document.querySelectorAll("li")).map((thing)=>{return thing.id});
+  let likedNumbers = Array.from(document.querySelectorAll("li")).map((li)=>{return li.id});
   number = document.querySelector(`#counter`).innerHTML;
   if (!likedNumbers.includes(number)) {
     addLike(number)
