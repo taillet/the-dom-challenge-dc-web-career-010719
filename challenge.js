@@ -2,11 +2,9 @@ let counter = 0;
 let p = false;
 let timerId = setInterval(callback, 1000)
 let number = null;
-let likedNumbers = [];
 let count;
 
 document.addEventListener("DOMContentLoaded", () => {
-  //add event listeners to listen on click of an email <td>
   document.getElementById(`+`).addEventListener('click', plusOne)
   document.getElementById(`-`).addEventListener('click', minusOne)
   document.getElementById(`<3`).addEventListener('click', like)
@@ -60,14 +58,10 @@ function addComment(text) {
 }
 
 function like() {
+  let likedNumbers = Array.from(document.querySelectorAll("li")).map((thing)=>{return thing.id});
   number = document.querySelector(`#counter`).innerHTML;
-  if (likedNumbers == []) {
-    likedNumbers.push(number)
-    addLike(number)
-  }
   if (!likedNumbers.includes(number)) {
     addLike(number)
-    likedNumbers.push(number)
   } else if (likedNumbers.includes(number)) {
     document.getElementById(`${number}`).innerHTML = `${number} has been liked ${++count} times`
   }
@@ -75,9 +69,9 @@ function like() {
 
 function addLike(number) {
   let node = document.createElement("LI");
-  node.id = number;           // Create a <li> node
+  node.id = number;
   count = 1;
-  let textnode = document.createTextNode(`${number} has been liked ${count} time`)  // Create a text node
-  node.appendChild(textnode);                              // Append the text to <li>
-  document.querySelector(`#list`).appendChild(node);     // Append <li> to <ul> with id="myList"
+  let textnode = document.createTextNode(`${number} has been liked ${count} time`)
+  node.appendChild(textnode);
+  document.querySelector(`#list`).appendChild(node);
 }
